@@ -1,0 +1,8 @@
+C:\Users\nkhan6\documents\visual studio 2017\Projects\BellTest\BellTest\bin\Debug\netcoreapp1.1\BellTest.deps.json
+C:\Users\nkhan6\documents\visual studio 2017\Projects\BellTest\BellTest\bin\Debug\netcoreapp1.1\BellTest.runtimeconfig.json
+C:\Users\nkhan6\documents\visual studio 2017\Projects\BellTest\BellTest\bin\Debug\netcoreapp1.1\BellTest.runtimeconfig.dev.json
+C:\Users\nkhan6\documents\visual studio 2017\Projects\BellTest\BellTest\bin\Debug\netcoreapp1.1\BellTest.dll
+C:\Users\nkhan6\documents\visual studio 2017\Projects\BellTest\BellTest\bin\Debug\netcoreapp1.1\BellTest.pdb
+C:\Users\nkhan6\documents\visual studio 2017\Projects\BellTest\BellTest\obj\Debug\netcoreapp1.1\BellTest.AssemblyInfo.cs
+C:\Users\nkhan6\documents\visual studio 2017\Projects\BellTest\BellTest\obj\Debug\netcoreapp1.1\BellTest.dll
+C:\Users\nkhan6\documents\visual studio 2017\Projects\BellTest\BellTest\obj\Debug\netcoreapp1.1\BellTest.pdb

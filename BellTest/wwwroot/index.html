@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Customers List</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Customers</h2>
+        <div class="panel-group">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <div class="columns">
+                        <ul id="customers" />
+                    </div>
+
+                    <a id="prevBtn" class="btn btn-info" role="button">Previous</a>
+                    <a id="nextBtn"  class="btn btn-info" role="button">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var urlParams = new URLSearchParams(window.location.search);
+
+        var pageNo;
+        var perPage;
+
+        if (urlParams.has('page') == false)
+        {
+            pageNo = 1;
+        }
+        else
+        {
+            pageNo = parseInt(urlParams.get('page'));
+        }
+        if (urlParams.has('per_page') == false)
+        {
+            perPage = 5;
+        }
+        else
+        {
+            perPage = parseInt(urlParams.get('per_page'));
+        }
+
+        var uri = 'http://localhost:25985/api/Customers/?page=' +  pageNo + '&per_page=' + perPage;
+        var totalItems = 1000; // db has 1000 customer records
+        var pageCount = totalItems / perPage;
+
+        $(document).ready(function () {
+            $.getJSON(uri)
+                .done(function (data) {
+
+                    $.each(data, function (key, item) {
+
+                        $('<li>', { text: item.firstName + " " + item.lastName }).appendTo($('#customers')).before("<br />");
+                        $("li").addClass("list-group-item list-group-item-info");
+
+                    });
+
+                    if (pageNo == 1)
+                    {
+                        $("#prevBtn").addClass("disabled");
+                        var nexturi = 'http://localhost:25985/index.html?page=' + (pageNo + 1) + '&per_page=' + perPage;
+                        $("#nextBtn").prop("href", nexturi);
+
+                    }
+                    else if (pageNo == pageCount)
+                    {
+                        $("#nextBtn").addClass("disabled");
+                        var prevuri = 'http://localhost:25985/index.html?page=' + (pageNo - 1) + '&per_page=' + perPage;
+                        $("#prevBtn").prop("href", prevuri);
+                    }
+                    else
+                    {
+                        var nexturi = 'http://localhost:25985/index.html?page=' + (pageNo + 1) + '&per_page=' + perPage;
+                        $("#nextBtn").prop("href", nexturi);
+                        $("#nextBtn").prop("disabled", false);
+
+                        var prevuri = 'http://localhost:25985/index.html?page=' + (pageNo - 1) + '&per_page=' + perPage;
+                        $("#prevBtn").prop("href", prevuri);
+                        $("#prevBtn").prop("disabled", false);
+                    }
+
+                });
+        });
+
+
+    </script>
+</body>
+</html>
